@@ -1,0 +1,134 @@
+/* src/components/Dashboard.css */
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color); /* e.g., #005073 */
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.menu-icon {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.patient-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.doctor-name {
+  font-weight: bold;
+}
+
+.logout-button {
+  background-color: var(--accent-color); /* e.g., #CCCCCC */
+  border: none;
+  border-radius: 4px;
+  color: var(--primary-color);
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* Body Layout */
+.dashboard-body {
+  display: flex;
+  flex: 1;
+}
+
+/* Side Menu */
+.side-menu {
+  width: 250px;
+  background-color: var(--accent-color); /* e.g., #CCCCCC */
+  padding: 20px;
+}
+
+.side-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-menu li {
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+}
+
+.timeline {
+  width: 50%;
+  padding-right: 20px;
+  border-right: 1px solid var(--accent-color);
+}
+
+.body-image {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Add these rules to Dashboard.css */
+
+.cpr-submenu {
+  list-style: none;
+  margin-left: 15px;
+  padding-left: 0;
+}
+
+.cpr-submenu li {
+  margin: 5px 0;
+  cursor: pointer;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+/* src/components/Dashboard.css */
+.main-content {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 60px); /* if header is 60px high, for example */
+}
+
+.dashboard-right {
+  flex: 1;             /* Let it expand */
+  height: 100%;        /* Fill the available space */
+  position: relative;  /* So the viewer container can fill this space */
+}

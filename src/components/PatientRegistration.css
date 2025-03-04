@@ -1,0 +1,122 @@
+/* src/components/PatientRegistration.css */
+
+.patient-registration-container {
+  display: flex;               /* Use flex layout for sidebar + form */
+  flex-direction: row;
+  width: 90%;                  /* Let it scale with screen size */
+  max-width: 1200px;           /* Prevents it from getting too wide */
+  margin: 50px auto;
+  background-color: var(--background-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;               /* Add padding inside the container */
+  height: 600px;               /* Fixed height for the entire container */
+  overflow: hidden;            /* Hide overflow on the container itself */
+}
+
+/* Sidebar (Menu) */
+.sidebar {
+  width: 200px;                /* Fixed width for the sidebar */
+  background-color: var(--accent-color);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.menu-icon {
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.menu-label {
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Main Form Container */
+.registration-form-container {
+  flex: 1;                     /* Takes the remaining width next to sidebar */
+  padding: 20px;               /* Spacing around form content */
+
+  /* Enable vertical scrolling inside the form area */
+  overflow-y: auto;
+  max-height: 100%;            /* Fill available container height */
+  box-sizing: border-box;       /* Ensure padding doesn't exceed container */
+}
+
+.form-title {
+  color: var(--primary-color);
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Registration Form Layout */
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adds vertical spacing between labels/inputs */
+}
+
+.registration-form label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.required {
+  color: var(--error-color);
+  margin-left: 4px;
+}
+
+/* Inputs & Selects */
+.registration-form input,
+.registration-form select {
+  padding: 8px;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Buttons Container */
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-end; /* Align buttons to the right */
+}
+
+.register-button,
+.cancel-button,
+.skip-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.register-button {
+  background-color: var(--primary-color); /* e.g., #005073 */
+}
+
+.cancel-button {
+  background-color: var(--accent-color);  /* e.g., #CCCCCC */
+  color: var(--primary-color);           /* Dark text on accent button */
+}
+
+.skip-button {
+  background-color: var(--secondary-color); /* e.g., #2a7f62 */
+}
+
+/* Error Message */
+.error-message {
+  margin-top: 15px;
+  color: var(--error-color);
+  font-weight: bold;
+}

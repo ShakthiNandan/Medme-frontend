@@ -1,0 +1,111 @@
+/* src/components/InjuriesMenu/InjuriesMenu.css */
+
+/* Container: sidebar + main content */
+.injuries-menu-container {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Fill the viewport */
+    background-color: var(--background-color);
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background-color: var(--accent-color);
+    padding: 20px;
+  }
+  
+  .menu-title {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-list li {
+    margin-bottom: 10px;
+  }
+  
+  .submenu-toggle {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .submenu {
+    list-style: none;
+    margin: 5px 0 0 15px;
+    padding: 0;
+  }
+  
+  .submenu li {
+    margin-bottom: 5px;
+  }
+  
+  .submenu li a,
+  .submenu li button {
+    color: var(--primary-color);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: normal;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Top Bar */
+  .top-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--accent-color);
+    padding: 10px;
+  }
+  
+  .username {
+    color: var(--primary-color);
+    margin-right: 10px;
+  }
+  
+  .user-icon {
+    font-size: 20px;
+  }
+  
+  /* Injuries Content Area */
+  .injuries-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  /* Timeline */
+  .injuries-timeline {
+    background-color: #fff;
+    border-top: 1px solid var(--accent-color);
+    padding: 10px;
+  }
+  
+  .timeline-list {
+    max-height: 150px;
+    overflow-y: auto; /* scrollable timeline */
+  }
+  
+  .timeline-entry {
+    border-bottom: 1px solid var(--accent-color);
+    padding: 5px 0;
+  }
+  

@@ -1,0 +1,72 @@
+/* src/components/PatientTypeSelection.css */
+
+.patient-type-container {
+  max-width: 600px;
+  height: 500px;
+  margin: 50px auto;
+  background-color: var(--background-color); /* e.g., #F8F9FA */
+  border: 2px solid var(--accent-color);       /* e.g., #CCCCCC */
+  border-radius: 30px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.patient-type-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-color); /* e.g., #005073 */
+  font-size: 24px;
+}
+
+.patient-type-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.patient-button {
+  display: inline-block;
+  width: 150px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #FFFFFF; /* Always use white for text on colored buttons */
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* New Patient Button using Primary Color */
+.new-patient {
+  background-color: var(--primary-color);
+}
+
+/* Current Patient Button using Secondary Color */
+.current-patient {
+  background-color: var(--secondary-color);
+}
+
+/* Discharged Patient Button using Primary Color (can adjust if needed) */
+.discharged-patient {
+  background-color: var(--primary-color);
+}
+
+/* Skip Button styled with Accent Color and Primary text */
+.skip-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.skip-button:hover {
+  background-color: var(--secondary-color);
+}
