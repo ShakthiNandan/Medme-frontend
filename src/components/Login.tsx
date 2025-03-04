@@ -1,10 +1,9 @@
-// src/components/Login.tsx
 import React, { useState } from 'react';
 import './Login.css';
-
 import { useNavigate } from 'react-router-dom';
-
 import { Link } from 'react-router-dom';
+
+const API_URL = process.env.REACT_APP_API_URL || 'https://your-backend.onrender.com';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -17,8 +16,7 @@ const Login: React.FC = () => {
     setError('');
 
     try {
-      // Example fetch call to your backend (adjust URL/logic as needed)
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
@@ -27,13 +25,11 @@ const Login: React.FC = () => {
       if (!response.ok) {
         throw new Error('Login failed');
       }
-      // Example token handling
+
       const data = await response.json();
       localStorage.setItem('token', data.token);
 
-      // Navigate to the Patient Type Selection page
       navigate('/patient-type');
-      // Clear form or redirect user, etc.
       setUsername('');
       setPassword('');
       alert('Login successful!');
@@ -62,12 +58,10 @@ const Login: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-<div className="forgot-password-link">
-          <Link to="/forgot-password">Forgot Password?</Link>
-        </div>
-
+          <div className="forgot-password-link">
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </div>
           <button type="submit">LOGIN</button>
-
           {error && <p className="error-message">{error}</p>}
         </form>
       </div>
