@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Html } from '@react-three/drei';
 import * as THREE from 'three';
+import { ThreeEvent } from '@react-three/fiber';
 
 interface Props {
   label: string;
@@ -15,14 +16,11 @@ const PointMarker: React.FC<Props> = ({ label, coords, tooltipData }) => {
   return (
     <mesh
       position={new THREE.Vector3(...coords)}
-      onPointerOver={(e) => {
+      onPointerOver={(e: ThreeEvent<PointerEvent>) => {
         e.stopPropagation(); // Prevent hover events from propagating to parent elements
         setHovered(true);
       }}
-      onPointerOut={(e) => {
-        e.stopPropagation();
-        setHovered(false);
-      }}
+      onPointerOut={() => setHovered(false)}
     >
       <sphereGeometry args={[0.03, 16, 16]} />
       <meshStandardMaterial color={hovered ? 'yellow' : 'red'} />
