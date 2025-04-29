@@ -6,7 +6,7 @@ const options = [
   { key: 'bio', label: 'Bio Data' },
   { key: 'emergencies', label: 'Emergencies' },
   { key: 'vitals', label: 'Vitals' },
-  { key: 'historical', label: 'Historical Data' },
+  { key: 'history', label: 'Historical Data' },
 ];
 
 interface Props {

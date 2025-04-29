@@ -1,20 +1,32 @@
 module.exports = {
-  "extends": [
-    "react-app",
-    "react-app/jest"
+  root: true,
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
   ],
-  "rules": {
-    "react/no-unknown-property": ["error", { 
-      "ignore": [
-        "position",
-        "args",
-        "intensity",
-        "object",
-        "geometry",
-        "material",
-        "rotation",
-        "scale"
-      ] 
-    }]
-  }
-}
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  plugins: ['react', '@typescript-eslint'],
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+  ignorePatterns: ['node_modules/@mediapipe/tasks-vision/**/*'],
+}; 
