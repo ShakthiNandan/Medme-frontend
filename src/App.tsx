@@ -55,7 +55,7 @@ function App() {
             <Route path="cpr/manual" element={<ManualCPR />} />
             <Route path="cpr/manual-intubated" element={<ManualIntubated />} />
             <Route path="cpr/assisted" element={<AssistedCPR />} />
-            <Route path="3dviewer" element={<ThreeDViewer />} />
+            <Route path="3dviewer" element={<ThreeDViewer selectedMenu="bio" />} />
             
             {/* Fluid Routes */}
             <Route path="fluid" element={<FluidMenu />}>

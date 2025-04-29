@@ -1,0 +1,20 @@
+/* src/components/OverlayMenu.css */
+.overlay-menu {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+.overlay-menu button {
+  padding: 6px 12px;
+  border: none;
+  background: var(--primary-color, #005073);
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.overlay-menu button.active {
+  background: var(--secondary-color, #107dac);
+}

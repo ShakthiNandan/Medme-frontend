@@ -21,12 +21,15 @@ const Dashboard: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [patient, setPatient] = useState<Patient | null>(null);
   const [timelineEvents, setTimelineEvents] = useState<any[]>([]);
+  const [selectedMenu, setSelectedMenu] = useState<'bio' | 'emergencies' | 'vitals' | 'historical'>('bio');
 
   useEffect(() => {
     const patientId = searchParams.get('patientId');
     if (patientId) {
       // In a real app, fetch patient data from API
       // fetch(`/api/patients/${patientId}`).then(...)
+
+      // Mock patient data
       setPatient({
         id: 1,
         name: 'John Doe',
@@ -52,72 +55,51 @@ const Dashboard: React.FC = () => {
   }, [searchParams]);
 
   return (
-    <div className="dashboard-container">
-      {/* Patient Info Section */}
-      <div className="patient-info-section">
-        {patient ? (
-          <>
-            <h2 className="patient-name">{patient.name}</h2>
-            <div className="patient-details">
-              <p><strong>IC/Passport:</strong> {patient.icPassport}</p>
-              <p><strong>Admitted:</strong> {patient.admittedDate}</p>
-            </div>
-          </>
-        ) : (
-          <h2>No patient selected</h2>
-        )}
-      </div>
-
-      {/* Main Content Area */}
-      <div className="dashboard-content">
+    <div className="dashboard-content">
+      <div className="main-content">
         {/* Left Column - Timeline and Vital Signs */}
-        <div className="dashboard-left">
-          {/* Vital Signs Summary */}
-          {patient && (
-            <div className="vital-signs-summary">
-              <h3>Vital Signs</h3>
-              <div className="vital-signs-grid">
-                <div className="vital-sign-item">
-                  <span className="vital-sign-label">Blood Pressure</span>
-                  <span className="vital-sign-value">{patient.vitalSigns.bloodPressure}</span>
-                </div>
-                <div className="vital-sign-item">
-                  <span className="vital-sign-label">Heart Rate</span>
-                  <span className="vital-sign-value">{patient.vitalSigns.heartRate}</span>
-                </div>
-                <div className="vital-sign-item">
-                  <span className="vital-sign-label">Respiratory Rate</span>
-                  <span className="vital-sign-value">{patient.vitalSigns.respiratoryRate}</span>
-                </div>
-                <div className="vital-sign-item">
-                  <span className="vital-sign-label">Oxygen Saturation</span>
-                  <span className="vital-sign-value">{patient.vitalSigns.oxygenSaturation}</span>
-                </div>
-                <div className="vital-sign-item">
-                  <span className="vital-sign-label">Temperature</span>
-                  <span className="vital-sign-value">{patient.vitalSigns.temperature}</span>
-                </div>
+        <div className="timeline">
+          <h3>Timeline</h3>
+          <div className="timeline-list">
+            {timelineEvents.map(event => (
+              <div key={event.id} className={`timeline-event ${event.type}`}>
+                <span className="event-time">{event.time}</span>
+                <span className="event-description">{event.event}</span>
               </div>
-            </div>
-          )}
-
-          {/* Timeline */}
-          <div className="timeline-section">
-            <h3>Timeline</h3>
-            <div className="timeline">
-              {timelineEvents.map(event => (
-                <div key={event.id} className={`timeline-event ${event.type}`}>
-                  <span className="event-time">{event.time}</span>
-                  <span className="event-description">{event.event}</span>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Right Column - 3D Viewer */}
         <div className="dashboard-right">
-          <ThreeDViewer />
+          {/* Menu Selection */}
+          <div className="viewer-menu">
+            <button 
+              className={`menu-button ${selectedMenu === 'bio' ? 'active' : ''}`}
+              onClick={() => setSelectedMenu('bio')}
+            >
+              Bio Data
+            </button>
+            <button 
+              className={`menu-button ${selectedMenu === 'emergencies' ? 'active' : ''}`}
+              onClick={() => setSelectedMenu('emergencies')}
+            >
+              Emergencies
+            </button>
+            <button 
+              className={`menu-button ${selectedMenu === 'vitals' ? 'active' : ''}`}
+              onClick={() => setSelectedMenu('vitals')}
+            >
+              Vitals
+            </button>
+            <button 
+              className={`menu-button ${selectedMenu === 'historical' ? 'active' : ''}`}
+              onClick={() => setSelectedMenu('historical')}
+            >
+              Historical
+            </button>
+          </div>
+          <ThreeDViewer selectedMenu={selectedMenu} />
         </div>
       </div>
     </div>
