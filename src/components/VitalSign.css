@@ -1,0 +1,144 @@
+/* Container */
+.vital-sign-page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Use your background color variable */
+    background-color: var(--background-color);
+  }
+  
+  /* Header */
+  .vital-sign-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Use your primary color variable */
+    background-color: var(--primary-color);
+    color: #fff; /* Text contrast for dark header */
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .header-left {
+    font-weight: bold;
+  }
+  
+  .header-center {
+    font-size: 1.2rem;
+  }
+  
+  .header-right .user-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Main content: sidebar + form section */
+  .vital-sign-main-content {
+    flex: 1;
+    display: flex;
+    color: var(--text-color);
+  }
+  
+  /* Sidebar */
+  .vital-sign-sidebar {
+    width: 220px;
+    background-color: #fff;
+    border-right: 1px solid var(--accent-color);
+    padding: 1rem;
+  }
+  
+  .vital-sign-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-item {
+    cursor: pointer;
+    margin: 0.5rem 0;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .submenu {
+    list-style-type: none;
+    padding-left: 1rem;
+  }
+  
+  .submenu li {
+    margin: 0.3rem 0;
+    cursor: pointer;
+    font-weight: normal;
+  }
+  
+  /* Form Section */
+  .vital-sign-form-section {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  
+  .vital-sign-form-section h2 {
+    margin-top: 0;
+    color: var(--text-color);
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.4rem;
+    box-sizing: border-box;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+  }
+  
+  /* Skip Section */
+  .skip-section {
+    margin-bottom: 1rem;
+  }
+  
+  .skip-label {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  .skip-label input {
+    transform: scale(1.2);
+  }
+  
+  /* Generate Button */
+  .generate-btn {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .generate-btn:hover {
+    background-color: #005f4f; /* Slightly darker shade, or pick your own */
+  }
+  
+  /* Arrow icon in the Vital Sign menu */
+  .arrow {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+  }
+  

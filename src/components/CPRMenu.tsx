@@ -1,32 +1,28 @@
-
 // src/components/CPRMenu.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './CPRMenu.css';
 
 const CPRMenu: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-
   return (
-    <div className="cpr-menu">
-      <div className="cpr-menu-title" onClick={toggleMenu}>
-        CPR {isOpen ? '▲' : '▼'}
+    <div className="cpr-menu-container">
+      <h1 className="cpr-menu-title">CPR Options</h1>
+      <div className="cpr-options-grid">
+        <Link to="/app/cpr/assisted" className="cpr-option-card">
+          <h2>Assisted CPR</h2>
+          <p>Use mechanical assistance for CPR</p>
+        </Link>
+        
+        <Link to="/app/cpr/manual" className="cpr-option-card">
+          <h2>Manual CPR</h2>
+          <p>Perform CPR manually</p>
+        </Link>
+        
+        <Link to="/app/cpr/manual-intubated" className="cpr-option-card">
+          <h2>Manual Intubated CPR</h2>
+          <p>Perform CPR with intubation</p>
+        </Link>
       </div>
-      {isOpen && (
-        <ul className="cpr-submenu">
-          <li>
-            <Link to="/cpr/assisted">Assisted CPR</Link>
-          </li>
-          <li>
-            <Link to="/cpr/manual">Manual</Link>
-          </li>
-          <li>
-            <Link to="/cpr/manual-intubated">Manual Intubated</Link>
-          </li>
-        </ul>
-      )}
     </div>
   );
 };

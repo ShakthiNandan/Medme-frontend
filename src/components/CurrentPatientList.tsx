@@ -82,7 +82,7 @@ const CurrentPatientList: React.FC = () => {
   // Handle "View" -> go to patient dashboard
   const handleView = (patientId: number) => {
     // Navigate to a route like /dashboard?patientId=xxx
-    navigate('/dashboard');
+    navigate(`/app/dashboard?patientId=${patientId}`);
   };
 
   // Handle "Edit" -> open modal with selected patient

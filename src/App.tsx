@@ -16,8 +16,25 @@ import CPRMenu from './components/CPRMenu';
 import ThreeDViewer from './components/ThreeDViewer';
 import FluidMenu from './components/FluidMenu';
 import FluidCrystalloid from './components/FluidCrystalloid';
+import FluidColloid from './components/FluidColloid';
+import FluidBloodProduct from './components/FluidBloodProduct';
 import InjuriesMenu from './components/InjuriesMenu';
 import OpenFracture from './components/OpenFracture';
+import VitalSign from './components/VitalSign';
+import BloodPressure from './components/BloodPressure';
+import HeartRate from './components/HeartRate';
+import RespiratoryRate from './components/RespiratoryRate';
+import OxygenSaturation from './components/OxygenSaturation';
+import PainScore from './components/PainScore';
+import Temperature from './components/Temperature';
+import IntravenousAccess from './components/IntravenousAccess';
+import OxygenDelivery from './components/OxygenDelivery';
+import Drugs from './components/Drugs';
+import ToiletSuturing from './components/ToiletSuturing';
+import Intubation from './components/Intubation';
+import Procedure from './components/Procedure';
+import Referral from './components/Referral';
+import Layout from './components/Layout';
 
 function App() {
   return (
@@ -26,26 +43,50 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/patient-type" element={<PatientTypeSelection />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/patient-registration" element={<PatientRegistration />} />
-          <Route path="/current-patient-list" element={<CurrentPatientList />} />
-          <Route path="/discharged-patient-list" element={<DischargedPatientList />} />
-          <Route path="/cprmenu" element={<CPRMenu />} />
-          <Route path="/cpr/assisted" element={<AssistedCPR />} />
-          <Route path="/cpr/manual" element={<ManualCPR />} />
-          <Route path="/cpr/manual-intubated" element={<ManualIntubated />} />
-          <Route path="/3dviewer" element={<ThreeDViewer />} />
-
-          {/* ✅ Fix for Nested Routes */}
-          <Route path="/fluid" element={<FluidMenu />}>
-            <Route index element={<FluidMenu />} />
-            <Route path="crystalloid" element={<FluidCrystalloid />} />
-          </Route>
-
-          <Route path="/injuries" element={<InjuriesMenu />}>
-            <Route index element={<InjuriesMenu />} />
-            <Route path="bone/open-fracture" element={<OpenFracture />} />
+          
+          <Route path="/app" element={<Layout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="patient-type" element={<PatientTypeSelection />} />
+            <Route path="patient-registration" element={<PatientRegistration />} />
+            <Route path="current-patient-list" element={<CurrentPatientList />} />
+            <Route path="discharged-patient-list" element={<DischargedPatientList />} />
+            <Route path="cpr" element={<CPRMenu />} />
+            <Route path="cpr/manual" element={<ManualCPR />} />
+            <Route path="cpr/manual-intubated" element={<ManualIntubated />} />
+            <Route path="cpr/assisted" element={<AssistedCPR />} />
+            <Route path="3dviewer" element={<ThreeDViewer />} />
+            
+            {/* Fluid Routes */}
+            <Route path="fluid" element={<FluidMenu />}>
+              <Route path="crystalloid" element={<FluidCrystalloid />} />
+              <Route path="colloid" element={<FluidColloid />} />
+              <Route path="blood-product" element={<FluidBloodProduct />} />
+            </Route>
+            
+            {/* Injuries Routes */}
+            <Route path="injuries" element={<InjuriesMenu />}>
+              <Route path="bone/open-fracture" element={<OpenFracture />} />
+              <Route path="bone/closed-fracture" element={<OpenFracture />} />
+              <Route path="soft-tissue/laceration" element={<ToiletSuturing />} />
+              <Route path="soft-tissue/contusion" element={<ToiletSuturing />} />
+              <Route path="soft-tissue/abrasion" element={<ToiletSuturing />} />
+            </Route>
+            
+            <Route path="vitals" element={<VitalSign />} />
+            <Route path="vital-signs/blood-pressure" element={<BloodPressure />} />
+            <Route path="vital-signs/heart-rate" element={<HeartRate />} />
+            <Route path="vital-signs/respiratory-rate" element={<RespiratoryRate />} />
+            <Route path="vital-signs/oxygen-saturation" element={<OxygenSaturation />} />
+            <Route path="vital-signs/pain-score" element={<PainScore />} />
+            <Route path="vital-signs/temperature" element={<Temperature />} />
+            <Route path="intravenous-access" element={<IntravenousAccess />} />
+            <Route path="oxygen-delivery" element={<OxygenDelivery />} />
+            <Route path="drugs" element={<Drugs />} />
+            <Route path="toilet-suturing" element={<ToiletSuturing />} />
+            <Route path="intubation" element={<Intubation />} />
+            <Route path="procedure" element={<Procedure />} />
+            <Route path="referral" element={<Referral />} />
           </Route>
         </Routes>
       </div>
