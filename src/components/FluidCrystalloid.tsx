@@ -55,7 +55,7 @@ const FluidCrystalloid: React.FC = () => {
               <option value="0.33% Na Cl + 5% Dex">0.33% Na Cl + 5% Dex</option>
               <option value="0.45% Na Cl">0.45% Na Cl</option>
               <option value="0.9% Na Cl">0.9% Na Cl</option>
-              <option value="Ringer's Lactate">Ringer's Lactate</option>
+              <option value="Ringer's Lactate">Ringer&apos;s Lactate</option>
             </select>
           </label>
         </div>
