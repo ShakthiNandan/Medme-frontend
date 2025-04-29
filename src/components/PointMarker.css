@@ -1,0 +1,32 @@
+/* src/components/PointMarker.css */
+.marker-label {
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.marker-tooltip {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  min-width: 120px;
+  max-width: 200px;
+  text-align: center;
+  z-index: 100;
+}
+
+.marker-tooltip p {
+  margin: 2px 0;
+  font-size: 0.7rem;
+}
+
+.marker-tooltip img {
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
