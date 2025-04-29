@@ -51,75 +51,43 @@ const InjuriesMenu: React.FC = () => {
 
   return (
     <div className="injuries-menu-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <p className="menu-title">Menu</p>
-        <ul className="menu-list">
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <button onClick={() => navigate('/injuries')}>Injuries</button>
-            {/* Expand sub-menus under Injuries */}
-            <ul className="submenu">
-              <li>
-                <button onClick={handleBoneClick} className="submenu-toggle">
-                  Bone
-                </button>
-                {showBoneSubmenu && (
-                  <ul className="submenu">
-                    <li>
-                      {/* Link to open fracture route */}
-                      <Link to="/injuries/bone/open-fracture">Open Fracture</Link>
-                    </li>
-                    <li>
-                      {/* No route for closed fracture, just timeline */}
-                      <button onClick={handleClosedFracture}>Closed Fracture</button>
-                    </li>
-                    <li>
-                      <button onClick={handleDislocation}>Dislocation</button>
-                    </li>
-                  </ul>
-                )}
-              </li>
-              <li>
-                <button onClick={handleSoftTissueClick} className="submenu-toggle">
-                  Soft Tissue Injuries
-                </button>
-                {showSoftTissueSubmenu && (
-                  <ul className="submenu">
-                    <li>
-                      <button onClick={handleSoftTissueOpen}>Open</button>
-                    </li>
-                    <li>
-                      <button onClick={handleSoftTissueClosed}>Closed</button>
-                    </li>
-                  </ul>
-                )}
-              </li>
-              <li>
-                <button onClick={handleBurn}>Burn</button>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      {/* Main content */}
-      <div className="main-content">
-        <div className="top-bar">
-          <span className="username">Jane Doe</span>
-          <span className="user-icon">👤</span>
+      {/* Navigation Links */}
+      <div className="injuries-navigation">
+        <div className="injury-category">
+          <h3>Bone Injuries</h3>
+          <div className="injury-links">
+            <Link to="/app/injuries/bone/open-fracture" className="injury-nav-link">
+              Open Fracture
+            </Link>
+            <Link to="/app/injuries/bone/closed-fracture" className="injury-nav-link">
+              Closed Fracture
+            </Link>
+          </div>
         </div>
 
-        {/* Outlet for sub-routes (e.g., Open Fracture) */}
-        <div className="injuries-content">
-          <Outlet />
+        <div className="injury-category">
+          <h3>Soft Tissue Injuries</h3>
+          <div className="injury-links">
+            <Link to="/app/injuries/soft-tissue/laceration" className="injury-nav-link">
+              Laceration
+            </Link>
+            <Link to="/app/injuries/soft-tissue/contusion" className="injury-nav-link">
+              Contusion
+            </Link>
+            <Link to="/app/injuries/soft-tissue/abrasion" className="injury-nav-link">
+              Abrasion
+            </Link>
+          </div>
         </div>
-
-        {/* Timeline */}
-        <InjuriesTimeline entries={timelineEntries} />
       </div>
+
+      {/* Sub-route content */}
+      <div className="injury-form-container">
+        <Outlet />
+      </div>
+
+      {/* Timeline */}
+      <InjuriesTimeline entries={timelineEntries} />
     </div>
   );
 };

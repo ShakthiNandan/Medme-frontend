@@ -1,0 +1,153 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Top Bar Styles */
+.top-bar {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.top-bar-left,
+.top-bar-center,
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-icon {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Main Container */
+.main-container {
+  display: flex;
+  margin-top: 4rem;
+  min-height: calc(100vh - 4rem);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  background-color: var(--background-color);
+  padding: 1rem;
+  position: fixed;
+  top: 4rem;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  z-index: 900;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+}
+
+/* Menu Items */
+.menu-item {
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.menu-item a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.menu-item a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.menu-item.active a {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Submenu Styles */
+.submenu {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.submenu-item a {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Arrow for expandable items */
+.arrow {
+  float: right;
+  margin-left: 0.5rem;
+}
+
+/* Page Content */
+.page-content {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 250px;
+  background-color: var(--page-background);
+  min-height: calc(100vh - 4rem);
+}
+
+@media (max-width: 1024px) {
+  .page-content {
+    margin-left: 0;
+  }
+}
+
+/* Logout Button */
+.logout-button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+  .top-bar {
+    padding: 10px 15px;
+  }
+
+  .top-bar-center {
+    font-size: 1.1rem;
+  }
+}

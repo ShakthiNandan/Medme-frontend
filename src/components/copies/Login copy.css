@@ -1,0 +1,68 @@
+/* src/components/Login.css */
+
+body {
+    background-color: #e8f6f3; /* Light greenish tint */
+    font-family: Arial, sans-serif;
+  }
+  
+  .login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-title {
+    text-align: center;
+    color: #2a7f62;  /* Hospital green */
+    margin-bottom: 20px;
+  }
+  
+  .login-form .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #005073; /* Hospital blue */
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cce7e8;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: #2a7f62;
+    box-shadow: 0 0 5px rgba(42, 127, 98, 0.5);
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #005073;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #2a7f62;
+  }
+  
+  .error-message {
+    color: #d9534f;
+    text-align: center;
+    margin-top: 15px;
+  }
+  

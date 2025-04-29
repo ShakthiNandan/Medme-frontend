@@ -1,96 +1,124 @@
 /* src/components/Login.css */
 
-/* Overall page background (hospital-themed light green) */
-body {
-  background-color: #e8f6f3;
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-/* Center the tablet container vertically and horizontally */
-.tablet-container {
+.login-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Fill the entire viewport height */
-}
-
-/* Tablet-like frame */
-.tablet-frame {
-  width: 500px;
-  height:90%;
-  background-color: #ffffff;
-  border: 2px solid #ccc;
-  border-radius: 50px; /* Rounded corners to mimic a tablet shape */
-  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e8f6f3 0%, #cce7e8 100%);
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Circular area for the logo */
-.logo-circle {
-  width: 80px;
-  height: 80px;
-  background-color: #cce7e8;
-  border-radius: 50%;
-  margin: 20px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+.login-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-header h1 {
   color: #005073;
+  font-size: 32px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.login-header p {
+  color: #666;
+  margin: 8px 0 0;
   font-size: 16px;
 }
 
-/* Form layout */
 .login-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
+  gap: 20px;
 }
 
-/* Username and Password fields */
-.login-form input {
-  width: 80%;
-  margin: 10px 0;
-  padding: 12px;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #333;
   font-size: 14px;
-  border: 1px solid #cce7e8;
-  border-radius: 4px;
+  font-weight: 500;
 }
 
-/* Forgot Password link */
+.form-group input {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #005073;
+  box-shadow: 0 0 0 3px rgba(0, 80, 115, 0.1);
+}
+
+.form-group input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form-options {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .forgot-password {
   color: #005073;
-  margin: 10px 0;
   text-decoration: none;
   font-size: 14px;
-  align-self: flex-end;
-  width: 80%;
-  text-align: right;
+  transition: color 0.3s ease;
 }
 
-/* Login button */
-.login-form button {
-  width: 80%;
-  padding: 12px;
+.forgot-password:hover {
+  color: #2a7f62;
+  text-decoration: underline;
+}
+
+.login-button {
   background-color: #005073;
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  padding: 14px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 10px;
+  transition: all 0.3s ease;
+  margin-top: 8px;
 }
 
-.login-form button:hover {
+.login-button:hover:not(:disabled) {
   background-color: #2a7f62;
+  transform: translateY(-1px);
 }
 
-/* Error message styling */
+.login-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 .error-message {
-  color: #d9534f;
-  margin-top: 15px;
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
   text-align: center;
+  margin-top: 8px;
 }

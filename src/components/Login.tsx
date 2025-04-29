@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://your-backend.onrender.com';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true);
 
     try {
       const response = await fetch(`${API_URL}/login`, {
@@ -23,46 +24,69 @@ const Login: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Login failed');
+        throw new Error('Invalid credentials');
       }
 
       const data = await response.json();
       localStorage.setItem('token', data.token);
-
-      navigate('/patient-type');
-      setUsername('');
-      setPassword('');
-      alert('Login successful!');
+      navigate('/app/patient-type');
     } catch (err) {
-      setError('Invalid credentials. Please try again.');
+      setError('Invalid username or password. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="tablet-container">
-      <div className="tablet-frame">
-        <div className="logo-circle">LOGO</div>
-        
-        <form className="login-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="USERNAME"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="PASSWORD"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <div className="forgot-password-link">
-            <Link to="/forgot-password">Forgot Password?</Link>
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <h1>MEDME</h1>
+          <p>Hospital Management System</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
+              required
+              disabled={isLoading}
+            />
           </div>
-          <button type="submit">LOGIN</button>
-          {error && <p className="error-message">{error}</p>}
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              required
+              disabled={isLoading}
+            />
+          </div>
+
+          <div className="form-options">
+            <Link to="/forgot-password" className="forgot-password">
+              Forgot Password?
+            </Link>
+          </div>
+
+          {error && <div className="error-message">{error}</div>}
+
+          <button 
+            type="submit" 
+            className="login-button"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Logging in...' : 'Login'}
+          </button>
         </form>
       </div>
     </div>

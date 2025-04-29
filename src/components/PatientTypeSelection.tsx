@@ -8,20 +8,20 @@ const PatientTypeSelection: React.FC = () => {
       <h2 className="patient-type-title">Select Patient Type</h2>
 
       <div className="patient-type-buttons">
-        <Link to="/patient-registration" className="patient-button new-patient">
+        <Link to="/app/patient-registration" className="patient-button new-patient">
           New Patient
         </Link>
 
-        <Link to="/current-patient-list" className="patient-button current-patient">
+        <Link to="/app/current-patient-list" className="patient-button current-patient">
           Current Patient
         </Link>
 
-        <Link to="/discharged-patient-list" className="patient-button discharged-patient">
+        <Link to="/app/discharged-patient-list" className="patient-button discharged-patient">
           Discharged Patient
         </Link>
       </div>
 
-      <Link to="/dashboard" className="skip-button">
+      <Link to="/app/dashboard" className="skip-button">
         Skip
       </Link>
     </div>

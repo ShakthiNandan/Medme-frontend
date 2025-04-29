@@ -1,69 +1,124 @@
-// src/components/Dashboard.tsx
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ThreeDViewer from './ThreeDViewer';
 import './Dashboard.css';
 
+interface Patient {
+  id: number;
+  name: string;
+  icPassport: string;
+  admittedDate: string;
+  vitalSigns: {
+    bloodPressure: string;
+    heartRate: string;
+    respiratoryRate: string;
+    oxygenSaturation: string;
+    temperature: string;
+  };
+}
+
 const Dashboard: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
-  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [patient, setPatient] = useState<Patient | null>(null);
+  const [timelineEvents, setTimelineEvents] = useState<any[]>([]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/');
-  };
+  useEffect(() => {
+    const patientId = searchParams.get('patientId');
+    if (patientId) {
+      // In a real app, fetch patient data from API
+      // fetch(`/api/patients/${patientId}`).then(...)
+      setPatient({
+        id: 1,
+        name: 'John Doe',
+        icPassport: '123456789012',
+        admittedDate: '2024-03-01',
+        vitalSigns: {
+          bloodPressure: '120/80',
+          heartRate: '72',
+          respiratoryRate: '16',
+          oxygenSaturation: '98%',
+          temperature: '37.0°C'
+        }
+      });
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+      // Mock timeline events
+      setTimelineEvents([
+        { id: 1, time: '10:00', event: 'Patient admitted', type: 'admission' },
+        { id: 2, time: '10:15', event: 'Vital signs recorded', type: 'vitals' },
+        { id: 3, time: '10:30', event: 'Blood pressure check', type: 'vitals' },
+        { id: 4, time: '11:00', event: 'Medication administered', type: 'medication' }
+      ]);
+    }
+  }, [searchParams]);
 
   return (
     <div className="dashboard-container">
-      <header className="dashboard-header">
-        <button className="menu-icon" onClick={toggleMenu}>☰</button>
-        <div className="patient-name">Jane Doe</div>
-        <div className="user-menu">
-          <div className="user-icon">👤</div>
-          <div className="user-info">
-            <span className="doctor-name">Dr. John Doe</span>
-            <button className="logout-button" onClick={handleLogout}>
-              Log Out
-            </button>
+      {/* Patient Info Section */}
+      <div className="patient-info-section">
+        {patient ? (
+          <>
+            <h2 className="patient-name">{patient.name}</h2>
+            <div className="patient-details">
+              <p><strong>IC/Passport:</strong> {patient.icPassport}</p>
+              <p><strong>Admitted:</strong> {patient.admittedDate}</p>
+            </div>
+          </>
+        ) : (
+          <h2>No patient selected</h2>
+        )}
+      </div>
+
+      {/* Main Content Area */}
+      <div className="dashboard-content">
+        {/* Left Column - Timeline and Vital Signs */}
+        <div className="dashboard-left">
+          {/* Vital Signs Summary */}
+          {patient && (
+            <div className="vital-signs-summary">
+              <h3>Vital Signs</h3>
+              <div className="vital-signs-grid">
+                <div className="vital-sign-item">
+                  <span className="vital-sign-label">Blood Pressure</span>
+                  <span className="vital-sign-value">{patient.vitalSigns.bloodPressure}</span>
+                </div>
+                <div className="vital-sign-item">
+                  <span className="vital-sign-label">Heart Rate</span>
+                  <span className="vital-sign-value">{patient.vitalSigns.heartRate}</span>
+                </div>
+                <div className="vital-sign-item">
+                  <span className="vital-sign-label">Respiratory Rate</span>
+                  <span className="vital-sign-value">{patient.vitalSigns.respiratoryRate}</span>
+                </div>
+                <div className="vital-sign-item">
+                  <span className="vital-sign-label">Oxygen Saturation</span>
+                  <span className="vital-sign-value">{patient.vitalSigns.oxygenSaturation}</span>
+                </div>
+                <div className="vital-sign-item">
+                  <span className="vital-sign-label">Temperature</span>
+                  <span className="vital-sign-value">{patient.vitalSigns.temperature}</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Timeline */}
+          <div className="timeline-section">
+            <h3>Timeline</h3>
+            <div className="timeline">
+              {timelineEvents.map(event => (
+                <div key={event.id} className={`timeline-event ${event.type}`}>
+                  <span className="event-time">{event.time}</span>
+                  <span className="event-description">{event.event}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </header>
 
-      <div className="dashboard-body">
-        {isMenuOpen && (
-          <nav className="side-menu">
-            <ul>
-              <li onClick={() => navigate('/dashboard')}>Dashboard</li>
-              <li onClick={() => navigate('/patient-type')}>Patients</li>
-              <li onClick={() => navigate('/vitals')}>Vital Signs</li>
-              <li onClick={() => navigate('/intravenous-access')}>Intravenous Access</li>
-              <li onClick={() => navigate('/oxygen-delivery')}>Oxygen Delivery</li>
-              <li onClick={() => navigate('/drugs')}>Drugs</li>
-              <li onClick={() => navigate('/fluid')}>Fluids</li>
-              <li onClick={() => navigate('/injuries')}>Injuries</li>
-              <li onClick={() => navigate('/cprmenu')}>CPR</li>
-              <li onClick={() => navigate('/intubation')}>Intubation</li>
-              <li onClick={() => navigate('/toilet-suturing')}>Toilet & Suturing</li>
-              <li onClick={() => navigate('/procedure')}>Procedure</li>
-              <li onClick={() => navigate('/referral')}>Referral</li>
-              <li onClick={() => navigate('/report')}>Report</li>
-            </ul>
-          </nav>
-        )}
-
-        <main className="main-content">
-          <div className="timeline">
-            <h3>Timeline</h3>
-            <p>Placeholder for timeline content or events...</p>
-          </div>
-          <div className="dashboard-right">
-            <ThreeDViewer />
-          </div>
-        </main>
+        {/* Right Column - 3D Viewer */}
+        <div className="dashboard-right">
+          <ThreeDViewer />
+        </div>
       </div>
     </div>
   );
