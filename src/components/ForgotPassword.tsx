@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './ForgotPassword.css';
 
 // Use an environment variable, fallback to localhost if not defined
-const API_URL = process.env.REACT_APP_API_URL;// || 'http://localhost:5000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 // At the top of your ForgotPassword.tsx (or in App.tsx)
 console.log('API_URL:', API_URL);
 
