@@ -6,6 +6,7 @@ import './Dashboard.css';
 
 const Dashboard: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [vitalDropdownOpen, setVitalDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -38,8 +39,35 @@ const Dashboard: React.FC = () => {
           <nav className="side-menu">
             <ul>
               <li onClick={() => navigate('/dashboard')}>Dashboard</li>
+              <li>
+                <button
+                  className="dropdown-btn"
+                  onClick={() => setVitalDropdownOpen((open) => !open)}
+                  style={{
+                    width: '100%',
+                    textAlign: 'left',
+                    background: 'none',
+                    border: '1px solid #ccc',
+                    borderRadius: '6px',
+                    padding: '8px',
+                    marginBottom: '6px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Vital Sign {vitalDropdownOpen ? '▲' : '▼'}
+                </button>
+                {vitalDropdownOpen && (
+                  <ul className="dropdown-list" style={{ paddingLeft: '10px', margin: 0 }}>
+                    <li onClick={() => navigate('/vital-signs/blood-pressure')}>Blood Pressure</li>
+                    <li onClick={() => navigate('/vital-signs/heart-rate')}>Heart Rate</li>
+                    <li onClick={() => navigate('/vital-signs/respiratory-rate')}>Respiratory Rate</li>
+                    <li onClick={() => navigate('/vital-signs/oxygen-saturation')}>Oxygen Saturation</li>
+                    <li onClick={() => navigate('/vital-signs/pain-score')}>Pain Score</li>
+                    <li onClick={() => navigate('/vital-signs/temperature')}>Temperature</li>
+                  </ul>
+                )}
+              </li>
               <li onClick={() => navigate('/patient-type')}>Patients</li>
-              <li onClick={() => navigate('/vitals')}>Vital Signs</li>
               <li onClick={() => navigate('/intravenous-access')}>Intravenous Access</li>
               <li onClick={() => navigate('/oxygen-delivery')}>Oxygen Delivery</li>
               <li onClick={() => navigate('/drugs')}>Drugs</li>
