@@ -56,7 +56,7 @@ function App() {
               <Route path="discharged-patient-list" element={<DischargedPatientList />} />
             
             {/* Vital Signs Routes */}
-            <Route path="/vital-signs" element={<VitalSigns />}>
+            <Route path="vital-signs" element={<VitalSigns />}>
               <Route index element={<BloodPressure />} />
               <Route path="blood-pressure" element={<BloodPressure />} />
               <Route path="heart-rate" element={<HeartRate />} />
